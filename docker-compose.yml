@@ -1,9 +1,11 @@
-version: '3'
+version: '3.7'
 
 services:
   db:
     image: mysql
     container_name: citylog-mysql
+    environment:
+      MYSQL_DATABASE: citylogdb
 
   citylog:
     image: citylog-tomee
