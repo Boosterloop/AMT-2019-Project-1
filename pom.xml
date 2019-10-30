@@ -7,6 +7,7 @@
   <groupId>ch.heigvd.amt</groupId>
   <artifactId>citylog</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
 
   <name>citylog</name>
   <!-- FIXME change it to the project's website -->
