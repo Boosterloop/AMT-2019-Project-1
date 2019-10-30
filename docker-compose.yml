@@ -3,6 +3,7 @@ version: '3'
 services:
   db:
     image: mysql
+    container_name: citylog-mysql
 
   citylog:
     image: citylog-tomee

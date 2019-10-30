@@ -19,8 +19,9 @@ Features:
 - Here, they can remove a stay or update its information.
 - By clicking on the "Top cities" button, they'll be able to see the most visited cities.
 
-- You can find the initial mockup of our application [here](specification/mockup.pdf).
-- You can find our database relational model [here](specification/DBmodel.pdf).
+You can find the initial mockup of our application [here](specification/mockup.pdf).
+
+You can find our database relational model [here](specification/DBmodel.pdf).
 
 ## Run the server
 
