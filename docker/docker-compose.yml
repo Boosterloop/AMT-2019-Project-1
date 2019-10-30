@@ -10,7 +10,7 @@ services:
   citylog:
     image: citylog-tomee
     container_name: citylog-tomee
-    build: .
+    build: ../
     ports:
       - "8888:8080"
     depends_on:
