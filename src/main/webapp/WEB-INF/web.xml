@@ -10,6 +10,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>MachinServlet</servlet-name>
-    <url-pattern>/quotes</url-pattern>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
 </web-app>
