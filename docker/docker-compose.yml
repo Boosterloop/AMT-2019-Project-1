@@ -5,6 +5,7 @@ services:
     image: citylog-mysql
     container_name: citylog-mysql
     build: mysql
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_DATABASE: citylogdb
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'

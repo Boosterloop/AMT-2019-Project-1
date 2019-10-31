@@ -5,6 +5,11 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Defines a User's data
+ *
+ * @author Alison Savary, Luc Wachter
+ */
 @Getter
 @RequiredArgsConstructor
 @EqualsAndHashCode
