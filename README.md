@@ -26,7 +26,7 @@ You can find our database relational model [here](specification/DBmodel.pdf).
 ## Run the server
 
 Using `docker-compose`, launching the server is as easy as a single command.
-Make sure you are in the main project folder (where the `Dockerfile is`) and run:
+Make sure you are in the `docker` folder and run:
 
 ```
 docker-compose up

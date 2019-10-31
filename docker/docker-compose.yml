@@ -2,10 +2,12 @@ version: '3.7'
 
 services:
   db:
-    image: mysql
+    image: citylog-mysql
     container_name: citylog-mysql
+    build: mysql
     environment:
       MYSQL_DATABASE: citylogdb
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
 
   citylog:
     image: citylog-tomee
