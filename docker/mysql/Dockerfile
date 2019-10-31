@@ -1,3 +1,3 @@
 FROM mysql
 
-COPY citylogdb.sql docker-entrypoint-intdb.d/
+COPY db-data/* docker-entrypoint-initdb.d/

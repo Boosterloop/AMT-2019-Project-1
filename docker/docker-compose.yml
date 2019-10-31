@@ -1,20 +1,18 @@
 version: '3.7'
 
 services:
-  db:
-    image: citylog-mysql
+  mysql:
     container_name: citylog-mysql
-    build: mysql
+    build: mysql/
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_DATABASE: citylogdb
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: sidney
 
   citylog:
-    image: citylog-tomee
     container_name: citylog-tomee
     build: ../
     ports:
       - "8888:8080"
     depends_on:
-      - db
+      - mysql
