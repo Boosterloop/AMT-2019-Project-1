@@ -1,5 +1,6 @@
 package ch.heigvd.amt.citylog.model;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,10 +13,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CityTest {
     @Test
     public void cityShouldBeCreatable() {
-        City city = new City(1234, "Saint-Pétersbourg", 12);
+        Country country = new Country("CH", "Schweiz");
+
+        City city = new City(1234, "Saint-Pétersbourg", country);
 
         assertEquals(city.getName(), "Saint-Pétersbourg");
         assertEquals(city.getId(), 1234);
-        assertEquals(city.getCountryId(), 12);
+        assertEquals(city.getCountry(), country);
     }
 }

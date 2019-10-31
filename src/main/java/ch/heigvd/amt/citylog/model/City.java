@@ -16,8 +16,10 @@ import lombok.RequiredArgsConstructor;
 public class City {
     @NonNull
     private final int id;
+
     @NonNull
     private String name;
+
     @NonNull
-    private int countryId;
+    private Country country;
 }

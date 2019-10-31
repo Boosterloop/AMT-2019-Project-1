@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class User {
     @NonNull
     private final String username;
+
     @NonNull
     private String password;
 }
