@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Unit tests for the City class
+ * Unit tests for the City model
  *
  * @author Alison Savary, Luc Wachter
  */

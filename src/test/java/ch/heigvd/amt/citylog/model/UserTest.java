@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Unit tests for the User class
+ * Unit tests for the User model
  *
  * @author Alison Savary, Luc Wachter
  */
