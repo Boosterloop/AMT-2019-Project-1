@@ -17,4 +17,4 @@ buildNumber.properties
 .attach_pid*
 
 tags
-venv
+worldcities.csv

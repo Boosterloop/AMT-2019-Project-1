@@ -5,7 +5,9 @@ api_url_base = 'https://restcountries.eu/rest/v2/'
 
 headers = {'Content-Type': 'application/json'}
 
+output_file = "../db-data/2_insert-countries.sql"
 
+# Get data from API
 def get_countries():
     api_url = '{0}all'.format(api_url_base)
 
@@ -32,8 +34,10 @@ if countries is not None:
 
     print(sql_query)
 
-    with open("../db-data/insert-countries.sql", "w+") as writer:
+    # Open file in write mode (and create it if necessary)
+    with open(output_file, "w+") as writer:
         writer.write(sql_query)
 
 else:
     print('[!] Request Failed')
+
