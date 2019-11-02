@@ -21,7 +21,7 @@ Features:
 
 You can find the initial mockup of our application [here](specification/mockup.pdf).
 
-You can find our database relational model [here](specification/DBmodel.pdf).
+You can find our database relational model [here](specification/db-model.png).
 
 ## Run the server
 

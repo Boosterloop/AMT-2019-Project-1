@@ -40,3 +40,4 @@ print(sql_query)
 
 with open(output_file, "w+") as writer:
     writer.write(sql_query)
+

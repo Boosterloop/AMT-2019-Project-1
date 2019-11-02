@@ -19,8 +19,8 @@ USE `citylogdb` ;
 DROP TABLE IF EXISTS `citylogdb`.`User` ;
 
 CREATE TABLE IF NOT EXISTS `citylogdb`.`User` (
-  `username` VARCHAR(50) NOT NULL,
-  `password` VARCHAR(512) NULL,
+  `username` VARCHAR(100) NOT NULL,
+  `passwordHash` CHAR(128) NOT NULL,
   PRIMARY KEY (`username`))
 ENGINE = InnoDB;
 
@@ -44,9 +44,9 @@ DROP TABLE IF EXISTS `citylogdb`.`City` ;
 
 CREATE TABLE IF NOT EXISTS `citylogdb`.`City` (
   `idCity` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NULL,
+  `name` VARCHAR(100) NOT NULL,
   `fk_countryCode` VARCHAR(2) NOT NULL,
-  PRIMARY KEY (`idCity`, `fk_countryCode`),
+  PRIMARY KEY (`idCity`),
   CONSTRAINT `fk_City_Country1`
     FOREIGN KEY (`fk_countryCode`)
     REFERENCES `citylogdb`.`Country` (`countryCode`)
