@@ -5,11 +5,11 @@
          version="3.1">
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-    <servlet-name>MachinServlet</servlet-name>
-    <servlet-class>ch.heigvd.amt.citylog.presentation.MachinServlet</servlet-class>
+    <servlet-name>ExampleServlet</servlet-name>
+    <servlet-class>ch.heigvd.amt.citylog.presentation.ExampleServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MachinServlet</servlet-name>
-    <url-pattern>/login</url-pattern>
+    <servlet-name>ExampleServlet</servlet-name>
+    <url-pattern>/machin</url-pattern>
   </servlet-mapping>
 </web-app>
