@@ -52,7 +52,7 @@
                     Home
                 </li>
                 <li class="nav-item">
-                    Login
+                    <a href="login">Login</a>
                 </li>
             </ul>
         </div>

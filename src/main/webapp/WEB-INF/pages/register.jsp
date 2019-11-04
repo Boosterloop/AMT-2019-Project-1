@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Alison
+  Date: 31.10.2019
+  Time: 15:41
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!--
 
@@ -24,7 +31,7 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Login
+        Register
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -49,10 +56,10 @@
         <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="/citylog">Home</a>
+                    Home
                 </li>
                 <li class="nav-item">
-                    <a href="">Login</a>
+                    <a href="login">Login</a>
                 </li>
             </ul>
         </div>
@@ -65,9 +72,9 @@
         <div class="container">
             <div class="col-md-4 ml-auto mr-auto">
                 <div class="card card-login card-plain">
-                    <form class="form" method="post" action="login">
+                    <form class="form" method="post" action="register">
                         <div class="card-header text-center">
-                            <h1>Login</h1>
+                            <h1>Register</h1>
                         </div>
                         <div class="card-body">
                             <div class="input-group no-border input-lg">
@@ -86,12 +93,21 @@
                                 </div>
                                 <input type="password" placeholder="Password..." class="form-control" />
                             </div>
+                            <div class="input-group no-border input-lg">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="now-ui-icons objects_key-25"></i>
+                                    </span>
+                                </div>
+                                <input type="password" placeholder="Repeat password..." class="form-control" />
+                            </div>
                         </div>
+
                         <div class="card-footer text-center">
-                            <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Login</a>
+                            <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Create Account</a>
                             <div class="pull-right">
                                 <h6>
-                                    <a href="register" class="link">Register</a>
+                                    <a href="login" class="link">Login</a>
                                 </h6>
                             </div>
                         </div>
