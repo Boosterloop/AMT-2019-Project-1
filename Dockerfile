@@ -1,5 +1,5 @@
-FROM tomee
+FROM payara/server-full:5.193
 
-COPY target/citylog.war /usr/local/tomee/webapps/citylog.war
-COPY docker/tomee/tomee.xml /usr/local/tomee/conf/tomee.xml
-COPY docker/tomee/mysql-connector-java-8.0.18.jar /usr/local/tomee/lib/mysql-driver.jar
+COPY target/citylog.war $DEPLOY_DIR
+COPY docker/payara/mysql-connector-java-8.0.18.jar ${PAYARA_DIR}/glassfish/lib/
+COPY docker/payara/post-boot-commands.asadmin /opt/payara/config/post-boot-commands.asadmin

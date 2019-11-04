@@ -25,7 +25,9 @@ You can find our database relational model [here](specification/db-model.png).
 
 ## Run the server
 
-Using `docker-compose`, launching the server is as easy as a single command.
+### With docker
+
+With `docker-compose`, launching the server is as easy as a single command.
 Make sure you are in the `docker` folder and run:
 
 ```
@@ -33,16 +35,37 @@ docker-compose up
 ```
 
 This will launch both a database container and an application server for the app.
+It will also populate the database with countries and cities, and (TODO) generate some test users and visits.
 
-It will also populate the database with countries and cities. (TODO)
+You can then access
+
+- the website at [http://localhost:8080/citylog](http://localhost:8080/citylog)
+- the admin console at [http://localhost:4848](http://localhost:4848) (user: admin / password: admin)
+
+### Local setup with Payara
+
+- Download the full Payara application server (version 5) on their website.
+- Copy the mysql driver `docker/payara/mysql-connector-java-8.0.18.jar` in `payara5/glassfish/domains/domain1/lib`.
+- In the folder `payara5/glassfish/bin`, run the following commands to create the jdbc resource pool.
+
+```
+./asadmin start-domain domain1
+
+./asadmin create-jdbc-connection-pool --restype javax.sql.DataSource --datasourceclassname com.mysql.cj.jdbc
+.MysqlDataSource --property 'user=<username>:password=<password>:url=jdbc\:mysql\://localhost\:3306/citylogdb:useSSL
+=false' citylog_pool
+
+./asadmin create-jdbc-resource --connectionpoolid citylog_pool jdbc/citylogdb
+
+./asadmin stop-domain domain1
+```
+
+- Run the sql scripts in your local database to create the db.
+- Setup the deployment of the `.war` in your favourite IDE.
 
 ## Tests
 
 ### Test servlets
-
-### Test UI
-
-Selenium...
 
 ## Load testing experiment
 

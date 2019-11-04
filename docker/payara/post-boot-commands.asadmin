@@ -1,0 +1,7 @@
+#!/bin/sh
+
+create-jdbc-connection-pool --restype javax.sql.DataSource --datasourceclassname com.mysql.cj.jdbc.MysqlXADataSource --property 'user=root:password=sidney:url=jdbc\:mysql\://db\:3306/citylogdb:useSSL=false' citylog_pool
+
+create-jdbc-resource --connectionpoolid citylog_pool jdbc/citylogdb
+
+deploy deployments/citylog.war
