@@ -16,6 +16,8 @@ import java.util.logging.Logger;
 
 /**
  * Stateless EJB implementing CRUD operations for countries
+ *
+ * @author Luc Wachter, Alison Savary
  */
 @Stateless
 public class CountriesDAOImpl implements CountriesDAO {
@@ -31,12 +33,14 @@ public class CountriesDAOImpl implements CountriesDAO {
             Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Country LIMIT 10");
             ResultSet resultSet = preparedStatement.executeQuery();
+
             while (resultSet.next()) {
                 String code = resultSet.getString("countryCode");
                 String name = resultSet.getString("name");
                 countries.add(new Country(code, name));
             }
             connection.close();
+
             return countries;
         } catch (SQLException ex) {
             Logger.getLogger(CountriesDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

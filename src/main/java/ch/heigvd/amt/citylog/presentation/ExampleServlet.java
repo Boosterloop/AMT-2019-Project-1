@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author Luc Wachter, Alison Savary
+ */
 public class ExampleServlet extends HttpServlet {
     @EJB
     private CountriesDAO countries;

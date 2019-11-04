@@ -1,4 +1,4 @@
-# AMT Project 1
+# AMT Project One
 
 ## Description
 
