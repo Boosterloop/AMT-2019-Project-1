@@ -18,5 +18,5 @@ public class User {
     private final String username;
 
     @NonNull
-    private String password;
+    private String passwordHash;
 }

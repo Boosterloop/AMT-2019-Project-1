@@ -25,13 +25,14 @@ public class CountriesDAOImpl implements CountriesDAO {
     @Resource(lookup = "jdbc/citylogdb")
     private DataSource dataSource;
 
+    // TODO: Remove
     @Override
     public List<Country> findAll() {
         List<Country> countries = new LinkedList<>();
 
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Country LIMIT 10");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Country");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -50,19 +51,37 @@ public class CountriesDAOImpl implements CountriesDAO {
 
     @Override
     public Country create(Country entity) {
+        // TODO exception
         return null;
     }
 
     @Override
-    public Country findById(String id) {
-        return null;
+    public Country findById(String id) throws Exception {
+        try (Connection connection = dataSource.getConnection()) {
+            PreparedStatement statement =
+                connection.prepareStatement("SELECT * FROM Country WHERE countryCode = ?");
+            statement.setString(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (!resultSet.next()) {
+                // TODO: throw more specific exception
+                throw new Exception("Could not find country with country code = " + id);
+            }
+
+            return new Country(resultSet.getString(1), resultSet.getString(2));
+        } catch (SQLException ex) {
+            Logger.getLogger(CountriesDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new Error(ex);
+        }
     }
 
     @Override
     public void update(Country entity) {
+        // TODO exception
     }
 
     @Override
     public void deleteById(String id) {
+        // TODO exception
     }
 }

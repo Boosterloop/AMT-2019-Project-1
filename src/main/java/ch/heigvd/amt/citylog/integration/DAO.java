@@ -9,9 +9,9 @@ package ch.heigvd.amt.citylog.integration;
 public interface DAO<PK, E> {
     E create(E entity);
 
-    E findById(PK id);
+    E findById(PK id) throws Exception;
 
     void update(E entity);
 
-    void deleteById(PK id);
+    void deleteById(PK id) throws Exception;
 }
