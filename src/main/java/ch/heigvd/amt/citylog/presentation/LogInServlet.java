@@ -6,8 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Login servlet
+ *
+ * @author Luc Wachter, Alison Savary
+ */
 public class LogInServlet extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(req, res);

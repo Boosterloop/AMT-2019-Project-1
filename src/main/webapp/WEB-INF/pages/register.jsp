@@ -72,7 +72,7 @@
         <div class="container">
             <div class="col-md-4 ml-auto mr-auto">
                 <div class="card card-login card-plain">
-                    <form class="form" method="post" action="register">
+                    <form class="form" method="post" action="">
                         <div class="card-header text-center">
                             <h1>Register</h1>
                         </div>
@@ -83,7 +83,7 @@
                                       <i class="now-ui-icons users_circle-08"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Username...">
+                                <input type="text" class="form-control" name="username" placeholder="Username...">
                             </div>
                             <div class="input-group no-border input-lg">
                                 <div class="input-group-prepend">
@@ -91,7 +91,7 @@
                                       <i class="now-ui-icons objects_key-25"></i>
                                     </span>
                                 </div>
-                                <input type="password" placeholder="Password..." class="form-control" />
+                                <input type="password" placeholder="Password..." name="password" class="form-control" />
                             </div>
                             <div class="input-group no-border input-lg">
                                 <div class="input-group-prepend">
@@ -104,7 +104,8 @@
                         </div>
 
                         <div class="card-footer text-center">
-                            <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Create Account</a>
+                            <input type="submit" class="btn btn-primary btn-round btn-lg btn-block">Create
+                          Account</input>
                             <div class="pull-right">
                                 <h6>
                                     <a href="login" class="link">Login</a>

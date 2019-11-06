@@ -15,6 +15,6 @@ public class UserTest {
         User user = new User("laykel", "ZüR1chB3rn");
 
         assertEquals(user.getUsername(), "laykel");
-        assertEquals(user.getPassword(), "ZüR1chB3rn");
+        assertEquals(user.getPasswordHash(), "ZüR1chB3rn");
     }
 }
