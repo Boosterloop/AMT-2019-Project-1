@@ -56,7 +56,7 @@ public class CountriesDAOImpl implements CountriesDAO {
     }
 
     @Override
-    public Country findById(String id) throws Exception {
+    public Country findById(String id) {
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement statement =
                 connection.prepareStatement("SELECT * FROM Country WHERE countryCode = ?");
@@ -64,8 +64,7 @@ public class CountriesDAOImpl implements CountriesDAO {
             ResultSet resultSet = statement.executeQuery();
 
             if (!resultSet.next()) {
-                // TODO: throw more specific exception
-                throw new Exception("Could not find country with country code = " + id);
+                return null;
             }
 
             return new Country(resultSet.getString(1), resultSet.getString(2));

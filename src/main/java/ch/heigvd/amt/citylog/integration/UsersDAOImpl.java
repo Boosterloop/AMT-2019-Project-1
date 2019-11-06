@@ -40,7 +40,7 @@ public class UsersDAOImpl implements UsersDAO {
     }
 
     @Override
-    public User findById(String id) throws Exception {
+    public User findById(String id) {
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement statement =
                 connection.prepareStatement("SELECT * FROM User WHERE username = ?");
@@ -48,8 +48,7 @@ public class UsersDAOImpl implements UsersDAO {
             ResultSet resultSet = statement.executeQuery();
 
             if (!resultSet.next()) {
-                // TODO: throw more specific exception
-                throw new Exception("Could not find user with username = " + id);
+                return null;
             }
 
             return new User(resultSet.getString(1), resultSet.getString(2));
