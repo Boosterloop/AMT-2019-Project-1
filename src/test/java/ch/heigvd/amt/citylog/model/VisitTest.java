@@ -17,9 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class VisitTest {
-    User user = null;
-    City city = null;
-    Date date = null;
+    private User user = null;
+    private City city = null;
+    private Date date = null;
 
     @BeforeAll
     public void setup() throws ParseException {

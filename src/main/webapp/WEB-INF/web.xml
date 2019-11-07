@@ -4,28 +4,32 @@
            http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
   <display-name>CityLog Website</display-name>
-  <servlet>
-    <servlet-name>ExampleServlet</servlet-name>
-    <servlet-class>ch.heigvd.amt.citylog.presentation.ExampleServlet</servlet-class>
-  </servlet>
+  <!-- Login servlet-->
   <servlet>
     <servlet-name>LogInServlet</servlet-name>
-    <servlet-class>ch.heigvd.amt.citylog.presentation.LogInServlet</servlet-class>
+    <servlet-class>ch.heigvd.amt.citylog.presentation.LoginServlet</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>LogInServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <!-- Register servlet-->
   <servlet>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>ch.heigvd.amt.citylog.presentation.RegisterServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ExampleServlet</servlet-name>
-    <url-pattern>/machin</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>LogInServlet</servlet-name>
-    <url-pattern>/login</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
+  <!-- Authentication filter -->
+  <filter>
+    <filter-name>AuthentificationFilter</filter-name>
+    <filter-class>ch.heigvd.amt.citylog.presentation.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthentificationFilter</filter-name>
+    <url-pattern>/visits</url-pattern>
+    <url-pattern>/logout</url-pattern>
+  </filter-mapping>
 </web-app>

@@ -65,6 +65,12 @@ You can then access
 
 ## Tests
 
+Test users:
+
+- luc, paSSw0rd
+- alison, 413F5tp.$
+- admin, Sidney413
+
 ### Test servlets
 
 ## Load testing experiment
