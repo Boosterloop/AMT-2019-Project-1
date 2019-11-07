@@ -1,8 +1,10 @@
 package ch.heigvd.amt.citylog.integration;
 
+import business.AuthenticationService;
 import ch.heigvd.amt.citylog.model.User;
 
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -23,13 +25,17 @@ public class UsersDAOImpl implements UsersDAO {
     @Resource(lookup = "jdbc/citylogdb")
     private DataSource dataSource;
 
+    @EJB
+    AuthenticationService auth;
+
     @Override
     public User create(User entity) {
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement statement =
                 connection.prepareStatement("INSERT INTO User (username, password) VALUES (?, ?)");
             statement.setString(1, entity.getUsername());
-            statement.setString(2, entity.getPasswordHash()); // TODO Hash the password here, using business code
+            // Hash password and then store
+            statement.setString(2, auth.hashPassword(entity.getPasswordHash()));
             statement.execute();
 
             return entity;
