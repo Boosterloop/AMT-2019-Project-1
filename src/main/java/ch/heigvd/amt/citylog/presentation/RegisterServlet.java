@@ -21,6 +21,8 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        // TODO
+        System.out.println(req.getSession().getAttribute("user"));
         req.getRequestDispatcher("/WEB-INF/pages/register.jsp").forward(req, res);
     }
 
@@ -42,6 +44,7 @@ public class RegisterServlet extends HttpServlet {
                     // Insert user
                     users.create(new User(username, password));
                     req.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(req, resp);
+                    return;
                 } else {
                     error = "Username already used";
                 }

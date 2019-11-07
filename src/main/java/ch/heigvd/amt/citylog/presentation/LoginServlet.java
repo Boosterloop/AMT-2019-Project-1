@@ -43,7 +43,9 @@ public class LoginServlet extends HttpServlet {
             if (auth.checkPassword(password, user.getPasswordHash())) {
                 // Set session for current user
                 req.getSession().setAttribute("user", user);
-                res.sendRedirect(req.getContextPath() + "/");
+                // TODO
+                System.out.println(req.getSession().getAttribute("user"));
+                res.sendRedirect(req.getContextPath() + "/register");
                 return;
             } else {
                 error = "Username or password incorrect";

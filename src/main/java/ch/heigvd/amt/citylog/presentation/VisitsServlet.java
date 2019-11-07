@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * List of visits servlet
+ *
  * @author Luc Wachter, Alison Savary
  */
-public class ExampleServlet extends HttpServlet {
+public class VisitsServlet extends HttpServlet {
     @EJB
     private CountriesDAO countries;
 

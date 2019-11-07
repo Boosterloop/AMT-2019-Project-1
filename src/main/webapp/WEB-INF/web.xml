@@ -6,12 +6,21 @@
   <display-name>CityLog Website</display-name>
   <!-- Login servlet-->
   <servlet>
-    <servlet-name>LogInServlet</servlet-name>
+    <servlet-name>LoginServlet</servlet-name>
     <servlet-class>ch.heigvd.amt.citylog.presentation.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>LogInServlet</servlet-name>
+    <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <!-- Logout servlet-->
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>ch.heigvd.amt.citylog.presentation.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
   <!-- Register servlet-->
   <servlet>
@@ -21,6 +30,15 @@
   <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <!-- Visits servlet-->
+  <servlet>
+    <servlet-name>VisitsServlet</servlet-name>
+    <servlet-class>ch.heigvd.amt.citylog.presentation.VisitsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VisitsServlet</servlet-name>
+    <url-pattern>/visits</url-pattern>
   </servlet-mapping>
   <!-- Authentication filter -->
   <filter>
