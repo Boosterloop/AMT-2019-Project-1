@@ -16,7 +16,7 @@ import java.io.IOException;
  *
  * @author Luc Wachter, Alison Savary
  */
-public class LogInServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
     @EJB
     private UsersDAO users;
 
