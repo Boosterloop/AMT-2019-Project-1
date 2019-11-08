@@ -1,7 +1,7 @@
 package ch.heigvd.amt.citylog.presentation;
 
 import javax.servlet.*;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -12,20 +12,17 @@ import java.io.IOException;
  *
  * @author Luc Wachter, Alison Savary
  */
-public class AuthenticationFilter implements Filter {
+public class AuthenticationFilter extends HttpFilter {
     @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest httpReq = (HttpServletRequest) req;
-        HttpServletResponse httpRes = (HttpServletResponse) res;
-
+    public void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         // If the user is connected
-        if (httpReq.getSession().getAttribute("user") != null) {
+        if (req.getSession().getAttribute("user") != null) {
             // Continue the filter chain
             chain.doFilter(req, res);
         } else {
             // Redirect user to login screen
-            httpReq.setAttribute("error", "You must be logged in to perform this task");
-            httpRes.sendRedirect(httpReq.getContextPath() + "/login");
+            req.setAttribute("error", "You must be logged in to perform this task");
+            res.sendRedirect(req.getContextPath() + "/login");
         }
     }
 }
