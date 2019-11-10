@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--
 
@@ -36,7 +35,7 @@
     <link href="./assets/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
 </head>
 
-<body class="landing-page sidebar-collapse">
+<body class="landing-page sidebar-collapse" style="background-image:url('./assets/img/new-york.jpg')">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
     <div class="container">
@@ -58,11 +57,35 @@
 </nav>
 <!-- End Navbar -->
 <div>
-    <div class="page-header-image" style="background-image:url('./assets/img/new-york.jpg')"></div>
     <div class="content-center">
         <div class="container">
-            <h1 class="title"><c:out value="${visits[0].getCity().getName()}" /></h1>
-            
+            <h1 class="text-white">Top Cities</h1>
+            <c:choose>
+                <c:when test="${not empty visits}">
+                    <table>
+                        <thead>
+                        <tr class="text-white">
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>Number of visits</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="visit" items="${visits}">
+                            <tr class="text-white">
+                                <td><a href="visitDetails?id=${visit.getCity().getId()}"><c:out value="${visit.getCity().getName()}" /></a></td>
+                                <td><c:out value="${visit.getCity().getCountry().getName()}" /></td>
+                                <td></td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </c:when>
+                <c:otherwise>
+                    <h2>No visits yet !</h2>
+                </c:otherwise>
+            </c:choose>
+            <button class="btn btn-primary" href="addVisit">Add Visit</button>
         </div>
     </div>
 

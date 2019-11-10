@@ -60,7 +60,7 @@
 <div>
     <div class="content-center">
         <div class="container">
-            <h1 class="text-white title">Top Cities</h1>
+            <h1 class="text-white">Top Cities</h1>
             <c:choose>
                 <c:when test="${not empty cities}">
                     <table>

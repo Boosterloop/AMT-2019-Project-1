@@ -1,27 +1,18 @@
 package ch.heigvd.amt.citylog.presentation;
 
-import ch.heigvd.amt.citylog.integration.CountriesDAO;
-
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * List of visits servlet
- *
- * @author Luc Wachter, Alison Savary
- */
-public class VisitsServlet extends HttpServlet {
-    @EJB
-    private CountriesDAO countries;
+public class VisitDetailsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        int cityId = Integer.parseInt(req.getParameter("id"));
         int userId;
-        //req.setAttribute("visits", countries.findAll(userId));
+        //req.setAttribute("visits", visits.findAll(userId, cityId));
         req.getRequestDispatcher("/WEB-INF/pages/visits.jsp").forward(req, res);
     }
 }

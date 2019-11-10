@@ -58,6 +58,15 @@
     <servlet-name>AddVisitServlet</servlet-name>
     <url-pattern>/addVisit</url-pattern>
   </servlet-mapping>
+  <!-- Visit details servlet -->
+  <servlet>
+    <servlet-name>VisitDetailsServlet</servlet-name>
+    <servlet-class>ch.heigvd.amt.citylog.presentation.VisitDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VisitDetailsServlet</servlet-name>
+    <url-pattern>/visitDetails</url-pattern>
+  </servlet-mapping>
   <!-- Authentication filter -->
   <filter>
     <filter-name>AuthentificationFilter</filter-name>
