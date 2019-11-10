@@ -37,49 +37,41 @@
 </head>
 
 <body class="landing-page sidebar-collapse">
+<c:if test="${not empty error}">
+  <div class="alert alert-danger" role="alert">
+    <div class="container">
+      <div class="alert-icon">
+        <i class="now-ui-icons objects_support-17"></i>
+      </div>
+      <strong>Registration failed: </strong> ${error}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" data-_extension-text-contrast="">
+                <span aria-hidden="true">
+                  <i class="now-ui-icons ui-1_simple-remove"></i>
+                </span>
+      </button>
+    </div>
+  </div>
+</c:if>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
   <div class="container">
-    <div class="navbar-translate">
-      <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-bar top-bar"></span>
-        <span class="navbar-toggler-bar middle-bar"></span>
-        <span class="navbar-toggler-bar bottom-bar"></span>
-      </button>
-    </div>
-    <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          Home
-        </li>
-        <li class="nav-item">
-          <a href="login">Login</a>
-        </li>
-      </ul>
-    </div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/citylog">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="login">Login</a>
+      </li>
+    </ul>
   </div>
 </nav>
 <!-- End Navbar -->
+
 <div class="page-header clear-filter" filter-color="orange">
   <div class="page-header-image" style="background-image:url('./assets/img/new-york.jpg')"></div>
   <div class="content">
     <div class="container">
-      <div class="col-md-6 ml-auto mr-auto">
-        <c:if test="${not empty error}">
-          <div class="alert alert-danger" role="alert">
-            <div class="container">
-              <div class="alert-icon">
-                <i class="now-ui-icons objects_support-17"></i>
-              </div>
-              <strong>Registration failed: </strong> ${error}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close" data-_extension-text-contrast="">
-                <span aria-hidden="true">
-                  <i class="now-ui-icons ui-1_simple-remove"></i>
-                </span>
-              </button>
-            </div>
-          </div>
-        </c:if>
+      <div class="col-md-4 ml-auto mr-auto">
 
         <div class="card card-login card-plain">
           <form class="form" method="post" action="">

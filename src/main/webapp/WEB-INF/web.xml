@@ -40,6 +40,24 @@
     <servlet-name>VisitsServlet</servlet-name>
     <url-pattern>/visits</url-pattern>
   </servlet-mapping>
+  <!-- Top Cities servlet -->
+  <servlet>
+    <servlet-name>TopCitiesServlet</servlet-name>
+    <servlet-class>ch.heigvd.amt.citylog.presentation.TopCitiesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TopCitiesServlet</servlet-name>
+    <url-pattern>/cities</url-pattern>
+  </servlet-mapping>
+  <!-- Add visit servlet -->
+  <servlet>
+    <servlet-name>AddVisitServlet</servlet-name>
+    <servlet-class>ch.heigvd.amt.citylog.presentation.AddVisitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddVisitServlet</servlet-name>
+    <url-pattern>/addVisit</url-pattern>
+  </servlet-mapping>
   <!-- Authentication filter -->
   <filter>
     <filter-name>AuthentificationFilter</filter-name>

@@ -20,7 +20,7 @@ public class VisitsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        req.setAttribute("countries", countries.findAll());
+       // req.setAttribute("countries", countries.findAll());
         req.getRequestDispatcher("/WEB-INF/pages/countries.jsp").forward(req, res);
     }
 }
