@@ -5,7 +5,7 @@ api_url_base = 'https://restcountries.eu/rest/v2/'
 
 headers = {'Content-Type': 'application/json'}
 
-output_file = "../db-data/2_insert-countries.sql"
+output_file = "../db-data/2_countries.csv"
 
 # Get data from API
 def get_countries():
@@ -22,15 +22,11 @@ def get_countries():
 countries = get_countries()
 
 if countries is not None:
-    sql_query = "INSERT INTO Country (countryCode, name) VALUES\n"
+    sql_query = "countryCode, name\n"
 
     for country in countries:
         name = country['name'].translate(str.maketrans({"'": "\\'"}))
-        sql_query += "('{0}', '{1}'),\n".format(country['alpha2Code'], name)
-
-    # Remove trailing comma
-    sql_query = sql_query[:len(sql_query)-2]
-    sql_query += ";\n"
+        sql_query += "{0}, {1}\n".format(country['alpha2Code'], name)
 
     print(sql_query)
 

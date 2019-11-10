@@ -2,8 +2,8 @@ from random_username.generate import generate_username
 from bcrypt import *
 from random import randint
 
-user_output_file = "../db-data/4_insert-users.sql"
-visit_output_file = "../db-data/5_insert-visits.sql"
+user_output_file = "../db-scripts/4_insert-users.sql"
+visit_output_file = "visits.csv"
 nbr_of_users = 1000
 
 # Insert random number of visits
@@ -18,7 +18,7 @@ def generate_visits(username):
         date = "{:04}-{:02}-{:02}".format(year, month, day)
         city = randint(1, 12900)
 
-        query +=  "('{0}', {1}, '{2}', '{2}'),\n".format(username, city, date)
+        query +=  ",{0}, {1}, {2}, {2}\n".format(username, city, date)
 
     return query
 
@@ -35,10 +35,10 @@ nameList = generate_username(nbr_of_users)
 names = list(dict.fromkeys(nameList))
 
 # Create queries for visits at the same time
-visit_query = "INSERT INTO Visit (fk_username, fk_idCity, startDate, endDate) VALUES\n"
+visit_load = "fk_username, fk_idCity, startDate, endDate\n"
 
-visit_query += generate_visits("luc")
-visit_query += generate_visits("alison")
+visit_load += generate_visits("luc")
+visit_load += generate_visits("alison")
 
 # Add names to sql query
 for name in names:
@@ -47,18 +47,16 @@ for name in names:
     user_query += "('{0}', '{1}'),\n".format(name, hashed.decode('utf-8'))
 
     # Insert random number of visits
-    visit_query += generate_visits(name)
+    visit_load += generate_visits(name)
 
 # Remove trailing comma
 user_query = user_query[:len(user_query)-2]
 user_query += ";\n"
-visit_query = visit_query[:len(visit_query)-2]
-visit_query += ";\n"
 
 # Write to files
 with open(user_output_file, "w+") as writer:
     writer.write(user_query)
 
 with open(visit_output_file, "w+") as writer:
-    writer.write(visit_query)
+    writer.write(visit_load)
 

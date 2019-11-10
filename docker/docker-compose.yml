@@ -4,7 +4,7 @@ services:
   db:
     container_name: citylog-mysql
     build: mysql/
-    command: --default-authentication-plugin=mysql_native_password
+    command: --default-authentication-plugin=mysql_native_password --max-allowed-packet=300M
     environment:
       MYSQL_DATABASE: citylogdb
       MYSQL_ROOT_PASSWORD: sidney
