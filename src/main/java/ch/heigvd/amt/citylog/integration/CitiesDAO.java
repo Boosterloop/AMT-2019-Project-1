@@ -1,6 +1,6 @@
 package ch.heigvd.amt.citylog.integration;
 
-import ch.heigvd.amt.citylog.model.Country;
+import ch.heigvd.amt.citylog.model.City;
 
 import java.util.List;
 
@@ -10,5 +10,6 @@ import java.util.List;
  *
  * @author Luc Wachter, Alison Savary
  */
-public interface CountriesDAO extends DAO<String, Country> {
+public interface CitiesDAO extends DAO<Integer, City> {
+    List<City> findAll();
 }
