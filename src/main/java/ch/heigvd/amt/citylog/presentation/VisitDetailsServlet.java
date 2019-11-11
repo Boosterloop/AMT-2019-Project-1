@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class VisitDetailsServlet extends HttpServlet {
-
     @EJB
     private VisitsDAO visits;
 
@@ -29,8 +28,7 @@ public class VisitDetailsServlet extends HttpServlet {
         } else {
             res.sendRedirect(req.getContextPath() + "/visits");
         }
-
-}
+    }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

@@ -16,13 +16,12 @@ import java.io.IOException;
  * @author Luc Wachter, Alison Savary
  */
 public class VisitsServlet extends HttpServlet {
-
     @EJB
     private CitiesDAO cities;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        User user = (User)req.getSession().getAttribute("user");
+        User user = (User) req.getSession().getAttribute("user");
         String userId = user.getUsername();
         req.setAttribute("visits", cities.findByUserId(userId));
         req.getRequestDispatcher("/WEB-INF/pages/visits.jsp").forward(req, res);

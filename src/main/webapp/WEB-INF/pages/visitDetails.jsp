@@ -65,9 +65,9 @@
                 <c:choose>
                     <c:when test="${not empty visits}">
                         <h1 class="title"><c:out value="${visits.get(0).getCity().getName()}" /></h1>
-                        <table class="table">
+                        <table class="table bg-white">
                             <thead>
-                            <tr class="text-white">
+                            <tr>
                                 <th class="text-center">Start Date</th>
                                 <th class="text-center">End Date</th>
                                 <th class="text-right">Actions</th>
@@ -75,7 +75,7 @@
                             </thead>
                             <tbody>
                             <c:forEach var="visit" items="${visits}">
-                                <tr class="text-white">
+                                <tr>
                                     <td class="text-center"><c:out value="${visit.getStartDate()}" /></td>
                                     <td class="text-center"><c:out value="${visit.getEndDate()}" /></td>
                                     <td class="text-right"><button type="button" rel="tooltip" class="btn btn-success"><a href="addVisit?id=${visit.getId()}"><i class="now-ui-icons ui-2_settings-90"></i></a></button>
