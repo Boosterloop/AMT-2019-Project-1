@@ -105,3 +105,6 @@ In order to run the tests correctly, it is necessary to:
 ## Load testing experiment
 
 Benchmark for pagination between the business and the resources tier...
+
+## Known issues
+- After updating or deleting an existing visit the user should be redirected to /visits but it does not happen.
