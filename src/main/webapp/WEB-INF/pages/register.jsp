@@ -71,7 +71,7 @@
   <div class="page-header-image" style="background-image:url('./assets/img/new-york.jpg')"></div>
   <div class="content">
     <div class="container">
-      <div class="col-md-4 ml-auto mr-auto">
+      <div class="col-md-6 ml-auto mr-auto">
 
         <div class="card card-login card-plain">
           <form class="form" method="post" action="">

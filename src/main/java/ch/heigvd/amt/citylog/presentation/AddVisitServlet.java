@@ -22,8 +22,15 @@ public class AddVisitServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        req.setAttribute("cities", cities.findAll());
-        req.getRequestDispatcher("/WEB-INF/pages/addVisit.jsp").forward(req, res);
+        if(req.getParameter("id") != null) {
+            int visitId = Integer.parseInt(req.getParameter("id"));
+            Visit visit = visits.findById(visitId);
+            req.setAttribute("visit", visit);
+            req.getRequestDispatcher("/WEB-INF/pages/addVisit.jsp").forward(req, res);
+        } else {
+            req.setAttribute("cities", cities.findAll());
+            req.getRequestDispatcher("/WEB-INF/pages/addVisit.jsp").forward(req, res);
+        }
     }
 
     @Override
@@ -32,11 +39,24 @@ public class AddVisitServlet extends HttpServlet {
         String startDate = req.getParameter("startDate");
         String endDate = req.getParameter("endDate");
         User user = (User)req.getSession().getAttribute("user");
-        System.out.println(startDate);
 
         visits.create(new Visit(0, user, cities.findById(cityId), startDate, endDate));
-        req.getRequestDispatcher("/WEB-INF/pages/visitDetails" + "?id=" + cityId).forward(req, res);
+        res.sendRedirect(req.getContextPath() + "/visits");
+    }
 
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        int visitId = Integer.parseInt(req.getParameter("id"));
+        String startDate = req.getParameter("startDate");
+        String endDate = req.getParameter("endDate");
+        int cityId = Integer.parseInt(req.getParameter("city"));
+        User user = (User)req.getSession().getAttribute("user");
 
+        try {
+            visits.update(new Visit(visitId, user, cities.findById(cityId), startDate, endDate));
+            res.sendRedirect(req.getContextPath() + "/visits");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

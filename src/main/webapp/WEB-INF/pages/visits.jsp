@@ -24,7 +24,7 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Top Cities
+        My visits
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -64,21 +64,21 @@
                 <h1 class="text-white">My visits</h1>
                 <c:choose>
                     <c:when test="${not empty visits}">
-                        <table>
+                        <table class="table">
                             <thead>
                             <tr class="text-white">
-                                <th>City</th>
-                                <th>Country</th>
-                                <th>Number of visits</th>
+                                <th class="text-center">City</th>
+                                <th class="text-center">Country</th>
+                                <th class="text-right">Number of visits</th>
                             </tr>
                             </thead>
                             <tbody>
                             <c:forEach var="visit" items="${visits}">
                                 <tr class="text-white">
-                                    <td><a href="visitDetails?id=${visit.getFirst().getId()}"><c:out
+                                    <td class="text-center"><a href="visitDetails?id=${visit.getFirst().getId()}"><c:out
                                       value="${visit.getFirst().getName()}" /></a></td>
-                                    <td><c:out value="${visit.getFirst().getCountry().getName()}" /></td>
-                                    <td><c:out value="${visit.getSecond()}"/></td>
+                                    <td class="text-center"><c:out value="${visit.getFirst().getCountry().getName()}" /></td>
+                                    <td class="text-right"><c:out value="${visit.getSecond()}"/></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

@@ -29,9 +29,9 @@ public class VisitDetailsServlet extends HttpServlet {
         int visitId = Integer.parseInt(req.getParameter("id"));
         try {
             visits.deleteById(visitId);
+            res.sendRedirect(req.getContextPath() + "/visits");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        res.sendRedirect(req.getContextPath() + "/visits");
     }
 }

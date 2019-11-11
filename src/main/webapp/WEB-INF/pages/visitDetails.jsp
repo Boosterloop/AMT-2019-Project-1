@@ -25,7 +25,7 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Top Cities
+        <c:out value="${visits.get(0).getCity().getName()}" />
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -65,22 +65,21 @@
                 <c:choose>
                     <c:when test="${not empty visits}">
                         <h1 class="title"><c:out value="${visits.get(0).getCity().getName()}" /></h1>
-                        <table>
+                        <table class="table">
                             <thead>
                             <tr class="text-white">
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th></th>
-                                <th></th>
+                                <th class="text-center">Start Date</th>
+                                <th class="text-center">End Date</th>
+                                <th class="text-right">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
                             <c:forEach var="visit" items="${visits}">
                                 <tr class="text-white">
-                                    <td><c:out value="${visit.getStartDate()}" /></td>
-                                    <td><c:out value="${visit.getEndDate()}" /></td>
-                                    <td><a><i class="now-ui-icons ui-2_settings-90"></i></a></td>
-                                    <td><a onclick="beforeDelete(${visit.getId()})"><i class="now-ui-icons ui-1_simple-remove"></i></a></td>
+                                    <td class="text-center"><c:out value="${visit.getStartDate()}" /></td>
+                                    <td class="text-center"><c:out value="${visit.getEndDate()}" /></td>
+                                    <td class="text-right"><button type="button" rel="tooltip" class="btn btn-success"><a href="addVisit?id=${visit.getId()}"><i class="now-ui-icons ui-2_settings-90"></i></a></button>
+                                    <button type="button" rel="tooltip" class="btn btn-danger" onclick="beforeDelete(${visit.getId()})"><i class="now-ui-icons ui-1_simple-remove"></i></button></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

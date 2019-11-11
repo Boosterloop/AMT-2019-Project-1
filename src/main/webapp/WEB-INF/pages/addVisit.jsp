@@ -25,7 +25,12 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Add visit
+        <c:if test="${not empty cities}">
+            Add visit
+        </c:if>
+        <c:if test="${not empty visit}">
+            Update visit
+        </c:if>
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -63,28 +68,62 @@
         <div class="container">
             <div class="col-md-6 ml-auto mr-auto">
                 <div class="card card-plain">
-                    <h1>Add visit</h1>
+                    <c:if test="${not empty cities}">
+                        <h1>Add visit</h1>
+                    </c:if>
+                    <c:if test="${not empty visit}">
+                        <h1>Update visit : <c:out value="${visit.getCity().getName()}" /></h1>
+                    </c:if>
+                    <c:if test="${not empty cities}">
                     <form class="form" method="post" action="addVisit">
+                    </c:if>
                         <div class="form-group">
-                            <label for="city">City</label>
-                            <select class="form-control" id="city" name="city">
-                                <c:if test="${not empty cities}">
-                                    <c:forEach var="city" items="${cities}">
-                                        <option value="${city.getId()}"><c:out value="${city.getName()}" /></option>
-                                    </c:forEach>
-                                </c:if>
-                            </select>
+                            <c:if test="${not empty cities}">
+                                <label for="city">City</label>
+                                <select class="form-control" id="city" name="city">
+                                <c:forEach var="city" items="${cities}">
+                                    <option value="${city.getId()}"><c:out value="${city.getName()}" /></option>
+                                </c:forEach>
+                                </select>
+                            </c:if>
+                            <c:if test="${not empty visit}">
+                                <label for="city">City</label>
+                                <select class="form-control" id="city" name="city" disabled>
+                                    <option selected value="${visit.getCity().getId()}"><c:out value="${visit.getCity().getName()}" /></option>
+                                </select>
+                            </c:if>
                         </div>
                         <div class="form-group">
                             <label for="startDate">Start date</label>
-                            <input type="date" class="form-control" id="startDate" name="startDate">
+                            <c:choose>
+                                <c:when test="${not empty visit}">
+                                    <input type="date" class="form-control" id="startDate" name="startDate" value="${visit.getStartDate()}">
+                                </c:when>
+                                <c:otherwise>
+                                    <input type="date" class="form-control" id="startDate" name="startDate">
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                         <div class="form-group">
                             <label for="endDate">End date</label>
-                            <input type="date" class="form-control" id="endDate" name="endDate">
+                            <c:choose>
+                                <c:when test="${not empty visit}">
+                                    <input type="date" class="form-control" id="endDate" name="endDate" value="${visit.getEndDate()}">
+                                </c:when>
+                                <c:otherwise>
+                                    <input type="date" class="form-control" id="endDate" name="endDate">
+                                </c:otherwise>
+                            </c:choose>
                         </div>
-                        <button type="submit" class="btn btn-primary">Add visit</button>
+                        <c:choose>
+                            <c:when test="${not empty visit}">
+                                <button class="btn-primary btn" onclick="update(${visit.getId()})">Update visit</button>
+                            </c:when>
+                            <c:otherwise>
+                                <button type="submit" class="btn btn-primary">Add visit</button>
                     </form>
+                            </c:otherwise>
+                        </c:choose>
                 </div>
             </div>
         </div>
@@ -112,10 +151,25 @@
 <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
 <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
 <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="./assets/js/now-ui-kit.js?v=1.3.0" type="text/javascript"></script>
+
+<script>
+    function update(visitId) {
+        let startDate = document.getElementById("startDate").value;
+        let endDate = document.getElementById("endDate").value;
+        let cityId = document.getElementById("city").value;
+
+        const Http = new XMLHttpRequest();
+        const url='addVisit?startDate=' + startDate + '&endDate=' + endDate + '&id=' + visitId + '&city=' + cityId;
+        Http.open("PUT", url);
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            console.log(Http.responseText)
+        }
+    }
+</script>
 </body>
 
 </html>
