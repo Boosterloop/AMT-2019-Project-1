@@ -89,7 +89,7 @@ The third one doesn't have any visits by default.
 
 ### Test servlets
 
-We use Mockito in order to 
+_Sadly, we missed the window to write clean servlet tests using mockito_
 
 ### Test DAOs
 
@@ -102,6 +102,10 @@ In order to run the tests correctly, it is necessary to:
 - **Undeploy** the application on the [admin page of the server](http://localhost:4848).
 - Run `mvn clean install` and check the tests results.
 
+_Sadly, we were only able to test one DAO, and with simple tests._
+
 ## Load testing experiment
 
 Benchmark for pagination between the business and the resources tier...
+
+_We sadly missed the opportunity to achieve anything useful in this part of the lab._
