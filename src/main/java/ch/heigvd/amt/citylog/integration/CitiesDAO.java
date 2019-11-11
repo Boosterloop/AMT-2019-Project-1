@@ -33,4 +33,11 @@ public interface CitiesDAO extends DAO<Integer, City> {
      * @return A list of cities visited by the user and their popularity
      */
     List<Pair<City, Integer>> findByUserId(String userId);
+
+    /**
+     * Get total number of cities in DB
+     *
+     * @return number of cities
+     */
+    int getNumberOfCities();
 }

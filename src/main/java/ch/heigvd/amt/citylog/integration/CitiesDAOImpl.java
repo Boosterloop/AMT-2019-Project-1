@@ -160,6 +160,23 @@ public class CitiesDAOImpl implements CitiesDAO {
     }
 
     @Override
+    public int getNumberOfCities() {
+        try (Connection connection = dataSource.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT COUNT(*) FROM City");
+            ResultSet resultSet = statement.executeQuery();
+
+            if (!resultSet.next()) {
+                return 0;
+            }
+
+            return resultSet.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(CitiesDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new Error(ex);
+        }
+    }
+
+    @Override
     public void update(City entity) {
         // TODO exception
     }

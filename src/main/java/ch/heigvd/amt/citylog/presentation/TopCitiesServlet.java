@@ -36,14 +36,13 @@ public class TopCitiesServlet extends HttpServlet {
         String search = req.getParameter("search[value]");
 
         List<Pair<City, Integer>> citiesPop = cities.findAllByPopularity(start, nbrOfElements, search);
-        int recordsTotal = 12000;
-        int recordsFiltered = 25;
+        int recordsTotal = cities.getNumberOfCities();
 
         // Create the JSON to send to the datatable
         JSONObject response = new JSONObject();
-        response.put("draw", 1);
+//        response.put("draw", 1);
         response.put("recordsTotal", recordsTotal);
-        response.put("recordsFiltered", recordsFiltered);
+        response.put("recordsFiltered", recordsTotal);
 
         JSONArray data = new JSONArray();
 
