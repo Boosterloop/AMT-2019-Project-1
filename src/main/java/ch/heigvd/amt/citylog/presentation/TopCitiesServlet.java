@@ -7,7 +7,6 @@ import org.json.simple.JSONObject;
 import utils.Pair;
 
 import javax.ejb.EJB;
-import javax.json.JsonObject;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +26,6 @@ public class TopCitiesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-//        req.setAttribute("cities", cities.findAllByPopularity(0, 10, null));
         req.getRequestDispatcher("/WEB-INF/pages/cities.jsp").forward(req, res);
     }
 
@@ -38,23 +36,28 @@ public class TopCitiesServlet extends HttpServlet {
         String search = req.getParameter("search[value]");
 
         List<Pair<City, Integer>> citiesPop = cities.findAllByPopularity(start, nbrOfElements, search);
-//        int recordsTotal = moviesManager.getNumberOfMovies();
+        int recordsTotal = 12000;
+        int recordsFiltered = 25;
 
         // Create the JSON to send to the datatable
-        JSONArray response = new JSONArray();
-//        response.put("recordsTotal", recordsTotal);
-//        response.put("recordsFiltered", recordsTotal);
+        JSONObject response = new JSONObject();
+        response.put("draw", 1);
+        response.put("recordsTotal", recordsTotal);
+        response.put("recordsFiltered", recordsFiltered);
+
+        JSONArray data = new JSONArray();
 
         // Create JSON payload
         for (Pair<City, Integer> cityPop : citiesPop) {
             JSONObject element = new JSONObject();
-            element.put("id", cityPop.getFirst().getId());
             element.put("name", cityPop.getFirst().getName());
+            element.put("country", cityPop.getFirst().getCountry().getName());
+            element.put("count", cityPop.getSecond());
 
-            response.add(element);
+            data.add(element);
         }
 
-        System.out.println(response.toJSONString().getBytes());
+        response.put("data", data);
 
         // Send JSON data to datatable
         res.setContentType("application/json;charset=UTF-8");

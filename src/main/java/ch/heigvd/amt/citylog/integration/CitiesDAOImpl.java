@@ -64,8 +64,9 @@ public class CitiesDAOImpl implements CitiesDAO {
 
         String request = "SELECT idCity, City.name, fk_countryCode, COUNT(*) AS count FROM City " +
             "INNER JOIN Visit ON City.idCity = Visit.fk_idCity ";
-        if (search != null) {
-            request += "LIKE %" + search + "% ";
+        System.out.println("ATT: " + search);
+        if (search.length() >= 3) {
+            request += "WHERE City.name LIKE '%" + search + "%' ";
         }
         request += "GROUP BY City.idCity ORDER BY COUNT(*) DESC LIMIT ?, ?";
 

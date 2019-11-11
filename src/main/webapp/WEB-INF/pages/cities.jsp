@@ -65,9 +65,9 @@
     <div class="container">
       <div class="col-md-10 ml-auto mr-auto">
         <h1 class="text-white">Top Cities</h1>
-        <table id="cities-table">
+        <table id="cities-table" class="table bg-white">
           <thead>
-          <tr class="text-white">
+          <tr>
             <th>City</th>
             <th>Country</th>
             <th>Number of visits</th>
@@ -109,20 +109,24 @@
 
 <script>
     $(document).ready(function() {
-        $('cities-table').DataTable({
-            processing: true,
+        $('#cities-table').DataTable({
+            processing: false,
             serverSide: true,
             ajax: {
                 url: '<%=request.getContextPath() + "/cities"%>',
                 type: 'POST'
             },
             columns: [{
-                searchable: false,
-                data: "id",
-                mData: "id"
-            }, {
                 data: "name",
                 mData: "name"
+            }, {
+                searchable: false,
+                data: "country",
+                mData: "country"
+            }, {
+                searchable: false,
+                data: "count",
+                mData: "count"
             }]
         });
     });
