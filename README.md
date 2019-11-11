@@ -25,6 +25,15 @@ You can find our database relational model [here](specification/db-model.png).
 
 ## Run the server
 
+In order to run the server, you first have to package the sources in a `.war`.
+
+Thanks to Apache Maven, this is just a single command away. Position yourself at the root of the project 
+(where the `src` dir is), and run:
+
+```
+mvn install
+```
+
 ### With docker
 
 With `docker-compose`, launching the server is as easy as a single command.

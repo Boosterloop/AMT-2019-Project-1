@@ -8,10 +8,7 @@ import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -71,13 +68,21 @@ public class VisitsDAOImpl implements VisitsDAO {
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement statement =
                 connection.prepareStatement("INSERT INTO Visit (fk_username, fk_idCity, startDate, endDate) VALUES " +
-                    "(?, ?, ?, ?)");
+                    "(?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, entity.getUser().getUsername());
             statement.setString(2, String.valueOf(entity.getCity().getId()));
             statement.setString(3, entity.getStartDate());
             statement.setString(4, entity.getEndDate());
             statement.execute();
 
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    entity.setId(generatedKeys.getInt(1));
+                }
+                else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
             return entity;
         } catch (SQLException ex) {
             Logger.getLogger(UsersDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,6 +118,7 @@ public class VisitsDAOImpl implements VisitsDAO {
             throw new Error(ex);
         }
     }
+
 
     @Override
     public void update(Visit entity) throws Exception {

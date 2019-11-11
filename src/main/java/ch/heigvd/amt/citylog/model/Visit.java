@@ -8,11 +8,13 @@ import lombok.*;
  * @author Alison Savary, Luc Wachter
  */
 @Getter
+@Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of= {"user", "city", "startDate"})
 public class Visit {
-    private final int id;
+    @NonNull
+    private int id;
 
     @NonNull
     private User user;
