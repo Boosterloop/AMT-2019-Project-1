@@ -11,7 +11,7 @@ public interface DAO<PK, E> {
 
     E findById(PK id);
 
-    void update(E entity);
+    void update(E entity) throws Exception;
 
     void deleteById(PK id) throws Exception;
 }

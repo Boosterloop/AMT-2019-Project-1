@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class VisitTest {
     private User user = null;
     private City city = null;
-    private Date date = null;
+    private String date = null;
 
     @BeforeAll
     public void setup() throws ParseException {
@@ -27,13 +27,12 @@ public class VisitTest {
         Country country = new Country("CH", "Schweiz");
         city = new City(23, "Kaltbrunn", country);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-        date = sdf.parse("2014.3.24");
+        date = "2014.3.24";
     }
 
     @Test
     public void visitShouldBeCreatableWithOnlyStartDate() {
-        Visit visit = new Visit(user, city, date);
+        Visit visit = new Visit(1, user, city, date);
 
         assertEquals(city, visit.getCity());
         assertEquals(user, visit.getUser());
@@ -42,7 +41,7 @@ public class VisitTest {
 
     @Test
     public void visitShouldBeCreatableWithAllArgs() {
-        Visit visit = new Visit(user, city, date, date);
+        Visit visit = new Visit(2, user, city, date, date);
 
         assertEquals(city, visit.getCity());
         assertEquals(user, visit.getUser());

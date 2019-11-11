@@ -32,7 +32,7 @@ public class UsersDAOImpl implements UsersDAO {
     public User create(User entity) {
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement statement =
-                connection.prepareStatement("INSERT INTO User (username, password) VALUES (?, ?)");
+                connection.prepareStatement("INSERT INTO User (username, passwordHash) VALUES (?, ?)");
             statement.setString(1, entity.getUsername());
             // Hash password and then store
             statement.setString(2, auth.hashPassword(entity.getPasswordHash()));
@@ -65,7 +65,7 @@ public class UsersDAOImpl implements UsersDAO {
     }
 
     @Override
-    public void update(User entity) {
+    public void update(User entity) throws Exception {
         // TODO exception
     }
 

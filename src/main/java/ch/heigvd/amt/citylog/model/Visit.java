@@ -2,8 +2,6 @@ package ch.heigvd.amt.citylog.model;
 
 import lombok.*;
 
-import java.util.Date;
-
 /**
  * Defines a Visit's data (link between User and City)
  *
@@ -14,6 +12,8 @@ import java.util.Date;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class Visit {
+    private final int id;
+
     @NonNull
     private User user;
 
@@ -21,7 +21,7 @@ public class Visit {
     private City city;
 
     @NonNull
-    private Date startDate;
+    private String startDate;
 
-    private Date endDate;
+    private String endDate;
 }
