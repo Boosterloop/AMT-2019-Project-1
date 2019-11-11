@@ -44,7 +44,10 @@ docker-compose up
 ```
 
 This will launch both a database container and an application server for the app.
-It will also populate the database with countries and cities, and (TODO) generate some test users and visits.
+It will also populate the database with countries and cities, and generate some test users and visits.
+
+If you want to populate the database with millions of visits, please uncompress the `docker/mysql/get-data/visits.tar
+.gz` file in the same folder and THEN run `docker-compose`.
 
 You can then access
 
