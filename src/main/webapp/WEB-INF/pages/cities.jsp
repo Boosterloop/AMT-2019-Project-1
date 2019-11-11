@@ -38,7 +38,7 @@
 
 <body class="landing-page sidebar-collapse" style="background-image:url('./assets/img/new-york.jpg')">
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
+<nav class="bg-primary fixed-top navbar navbar-expand-md">
     <div class="container">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -51,53 +51,57 @@
                 <a href="cities">Top Cities</a>
             </li>
             <li class="nav-item">
-                <a href="">Logout</a>
+                <a href="logout">Logout</a>
             </li>
         </ul>
     </div>
 </nav>
 <!-- End Navbar -->
-<div>
-    <div class="content-center">
+<div class="page-header clear-filter" filter-color="orange">
+    <div class="page-header-image" style="background-image:url('./assets/img/new-york.jpg')"></div>
+    <div class="content">
         <div class="container">
-            <h1 class="text-white">Top Cities</h1>
-            <c:choose>
-                <c:when test="${not empty cities}">
-                    <table>
-                        <thead>
-                        <tr class="text-white">
-                            <th>City</th>
-                            <th>Country</th>
-                            <th>Number of visits</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="city" items="${cities}">
+            <div class="col-md-10 ml-auto mr-auto">
+                <h1 class="text-white">Top Cities</h1>
+                <c:choose>
+                    <c:when test="${not empty cities}">
+                        <table>
+                            <thead>
                             <tr class="text-white">
-                                <td><c:out value="${city.getName()}" /></td>
-                                <td><c:out value="${city.getCountry().getName()}" /></td>
-                                <td></td>
+                                <th>City</th>
+                                <th>Country</th>
+                                <th>Number of visits</th>
                             </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </c:when>
-                <c:otherwise>
-                    <h2>No cities in DB</h2>
-                </c:otherwise>
-            </c:choose>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="city" items="${cities}">
+                                <tr class="text-white">
+                                    <td><c:out value="${city.getName()}" /></td>
+                                    <td><c:out value="${city.getCountry().getName()}" /></td>
+                                    <td></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:when>
+                    <c:otherwise>
+                        <h2>No cities in DB</h2>
+                    </c:otherwise>
+                </c:choose>
+            </div>
         </div>
     </div>
+</div>
 
-    <footer class="footer footer-default">
-        <div class=" container ">
+    <footer class="footer mt-auto py-3 fixed-bottom bg-primary">
+        <div class=" container text-white">
             <div class="copyright" id="copyright">
                 &copy;
                 <script>
                     document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
                 </script>, Designed by
-                <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                <a href="https://www.invisionapp.com" target="_blank" class="text-white">Invision</a>. Coded by
+                <a href="https://www.creative-tim.com" target="_blank" class="text-white">Creative Tim</a>.
             </div>
         </div>
     </footer>

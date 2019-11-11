@@ -38,7 +38,7 @@
 
 <body class="landing-page sidebar-collapse">
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
+<nav class="bg-primary fixed-top navbar navbar-expand-md">
     <div class="container">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -51,7 +51,7 @@
                 <a href="cities">Top Cities</a>
             </li>
             <li class="nav-item">
-                <a href="">Logout</a>
+                <a href="logout">Logout</a>
             </li>
         </ul>
     </div>
@@ -62,19 +62,19 @@
     <div class="content-center">
         <div class="container">
             <h1 class="title"><c:out value="${visits[0].getCity().getName()}" /></h1>
-            
+
         </div>
     </div>
 
-    <footer class="footer footer-default">
-        <div class=" container ">
+    <footer class="footer mt-auto py-3 fixed-bottom bg-primary">
+        <div class=" container text-white">
             <div class="copyright" id="copyright">
                 &copy;
                 <script>
                     document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
                 </script>, Designed by
-                <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                <a href="https://www.invisionapp.com" target="_blank" class="text-white">Invision</a>. Coded by
+                <a href="https://www.creative-tim.com" target="_blank" class="text-white">Creative Tim</a>.
             </div>
         </div>
     </footer>

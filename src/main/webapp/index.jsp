@@ -35,27 +35,18 @@
     <link href="./assets/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
 </head>
 
-<body class="landing-page sidebar-collapse">
+<body class="landing-page sidebar-collapse" >
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
+<nav class="bg-primary fixed-top navbar navbar-expand-md">
     <div class="container">
-        <div class="navbar-translate">
-            <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-bar top-bar"></span>
-                <span class="navbar-toggler-bar middle-bar"></span>
-                <span class="navbar-toggler-bar bottom-bar"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    Home
-                </li>
-                <li class="nav-item">
-                    <a href="login">Login</a>
-                </li>
-            </ul>
-        </div>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/citylog">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="login">Login</a>
+            </li>
+        </ul>
     </div>
 </nav>
 <!-- End Navbar -->
@@ -70,15 +61,15 @@
         </div>
     </div>
 
-    <footer class="footer footer-default">
-        <div class=" container ">
+    <footer class="footer mt-auto py-3 fixed-bottom bg-primary">
+        <div class=" container text-white">
             <div class="copyright" id="copyright">
                 &copy;
                 <script>
                     document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
                 </script>, Designed by
-                <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                <a href="https://www.invisionapp.com" target="_blank" class="text-white">Invision</a>. Coded by
+                <a href="https://www.creative-tim.com" target="_blank" class="text-white">Creative Tim</a>.
             </div>
         </div>
     </footer>

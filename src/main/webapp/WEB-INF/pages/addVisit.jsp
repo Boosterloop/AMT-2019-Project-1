@@ -38,7 +38,7 @@
 
 <body>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
+<nav class="bg-primary fixed-top navbar navbar-expand-md">
     <div class="container">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -51,7 +51,7 @@
                 <a href="cities">Top Cities</a>
             </li>
             <li class="nav-item">
-                <a href="">Logout</a>
+                <a href="logout">Logout</a>
             </li>
         </ul>
     </div>
@@ -90,6 +90,18 @@
         </div>
     </div>
 </div>
+<footer class="footer mt-auto py-3 fixed-bottom bg-primary">
+    <div class=" container text-white">
+        <div class="copyright" id="copyright">
+            &copy;
+            <script>
+                document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+            </script>, Designed by
+            <a href="https://www.invisionapp.com" target="_blank" class="text-white">Invision</a>. Coded by
+            <a href="https://www.creative-tim.com" target="_blank" class="text-white">Creative Tim</a>.
+        </div>
+    </div>
+</footer>
 <!--   Core JS Files   -->
 <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
 <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
