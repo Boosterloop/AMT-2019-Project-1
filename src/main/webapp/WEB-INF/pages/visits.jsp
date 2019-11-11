@@ -63,9 +63,9 @@
                 <h1 class="text-white">My visits</h1>
                 <c:choose>
                     <c:when test="${not empty visits}">
-                        <table class="table">
+                        <table class="table bg-white">
                             <thead>
-                            <tr class="text-white">
+                            <tr>
                                 <th class="text-center">City</th>
                                 <th class="text-center">Country</th>
                                 <th class="text-right">Number of visits</th>
@@ -73,7 +73,7 @@
                             </thead>
                             <tbody>
                             <c:forEach var="visit" items="${visits}">
-                                <tr class="text-white">
+                                <tr>
                                     <td class="text-center"><a href="visitDetails?id=${visit.getFirst().getId()}"><c:out
                                       value="${visit.getFirst().getName()}" /></a></td>
                                     <td class="text-center"><c:out value="${visit.getFirst().getCountry().getName()}" /></td>

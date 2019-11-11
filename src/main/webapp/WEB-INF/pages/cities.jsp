@@ -111,6 +111,7 @@
         $('#cities-table').DataTable({
             processing: false,
             serverSide: true,
+            lengthMenu: [10],
             ajax: {
                 url: '<%=request.getContextPath() + "/cities"%>',
                 type: 'POST'

@@ -71,7 +71,24 @@ Test users:
 - alison, 413F5tp.$
 - admin, Sidney413
 
+The first two users have a list of visits created in the test data.
+
+The third one doesn't have any visits by default.
+
 ### Test servlets
+
+We use Mockito in order to 
+
+### Test DAOs
+
+We use Arquillian to test DAOs.
+
+In order to run the tests correctly, it is necessary to:
+
+- Run the `import.sh` script in the `ssl` directory after making sure the paths in the file are right.
+- Run the database and application server in docker (see the manual higher in this readme).
+- **Undeploy** the application on the [admin page of the server](http://localhost:4848).
+- Run `mvn clean install` and check the tests results.
 
 ## Load testing experiment
 
