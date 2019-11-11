@@ -21,8 +21,6 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        // TODO
-        System.out.println(((User)req.getSession().getAttribute("user")).getUsername());
         req.getRequestDispatcher("/WEB-INF/pages/register.jsp").forward(req, res);
     }
 
