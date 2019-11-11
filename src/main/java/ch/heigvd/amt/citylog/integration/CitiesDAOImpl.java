@@ -37,9 +37,9 @@ public class CitiesDAOImpl implements CitiesDAO {
 
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement preparedStatement =
+            PreparedStatement statement =
                 connection.prepareStatement("SELECT * FROM City ORDER BY name ASC");
-            ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 String id = resultSet.getString("idCity");
@@ -59,15 +59,22 @@ public class CitiesDAOImpl implements CitiesDAO {
     }
 
     @Override
-    public List<Pair<City, Integer>> findAllByPopularity() {
+    public List<Pair<City, Integer>> findAllByPopularity(int start, int nbrOfElements, String search) {
         List<Pair<City, Integer>> citiesPopularity = new LinkedList<>();
+
+        String request = "SELECT idCity, City.name, fk_countryCode, COUNT(*) AS count FROM City " +
+            "INNER JOIN Visit ON City.idCity = Visit.fk_idCity ";
+        if (search != null) {
+            request += "LIKE %" + search + "% ";
+        }
+        request += "GROUP BY City.idCity ORDER BY COUNT(*) DESC LIMIT ?, ?";
 
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement preparedStatement =
-                connection.prepareStatement("SELECT idCity, City.name, fk_countryCode, COUNT(*) AS count FROM City " +
-                    "INNER JOIN Visit ON City.idCity = Visit.fk_idCity GROUP BY City.idCity ORDER BY COUNT(*) DESC");
-            ResultSet resultSet = preparedStatement.executeQuery();
+            PreparedStatement statement = connection.prepareStatement(request);
+            statement.setInt(1, start);
+            statement.setInt(2, nbrOfElements);
+            ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 String id = resultSet.getString("idCity");
@@ -97,7 +104,7 @@ public class CitiesDAOImpl implements CitiesDAO {
             PreparedStatement statement =
                 connection.prepareStatement("SELECT idCity, City.name, fk_countryCode, COUNT(*) AS count FROM " +
                     "City INNER JOIN Visit ON City.idCity = Visit.fk_idCity WHERE Visit.fk_username=? GROUP BY City" +
-                    ".idCity, City.name ORDER BY City.name ASC");
+                    ".idCity, City.name ORDER BY City.name ASC LIMIT 20");
             statement.setString(1, userId);
             ResultSet resultSet = statement.executeQuery();
 
