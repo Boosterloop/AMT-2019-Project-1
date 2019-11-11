@@ -75,6 +75,9 @@
   <filter-mapping>
     <filter-name>AuthentificationFilter</filter-name>
     <url-pattern>/visits</url-pattern>
+    <url-pattern>/cities</url-pattern>
+    <url-pattern>/addVisit</url-pattern>
+    <url-pattern>/visitDetails</url-pattern>
     <url-pattern>/logout</url-pattern>
   </filter-mapping>
 </web-app>

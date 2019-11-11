@@ -78,7 +78,7 @@
                                     <td><a href="visitDetails?id=${visit.getFirst().getId()}"><c:out
                                       value="${visit.getFirst().getName()}" /></a></td>
                                     <td><c:out value="${visit.getFirst().getCountry().getName()}" /></td>
-                                    <td></td>
+                                    <td><c:out value="${visit.getSecond()}"/></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
