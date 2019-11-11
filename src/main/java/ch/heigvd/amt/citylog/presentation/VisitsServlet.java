@@ -1,7 +1,6 @@
 package ch.heigvd.amt.citylog.presentation;
 
-import ch.heigvd.amt.citylog.integration.CountriesDAO;
-import ch.heigvd.amt.citylog.integration.VisitsDAO;
+import ch.heigvd.amt.citylog.integration.CitiesDAO;
 import ch.heigvd.amt.citylog.model.User;
 
 import javax.ejb.EJB;
@@ -19,14 +18,13 @@ import java.io.IOException;
 public class VisitsServlet extends HttpServlet {
 
     @EJB
-    private VisitsDAO visits;
+    private CitiesDAO cities;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         User user = (User)req.getSession().getAttribute("user");
         String userId = user.getUsername();
-        req.setAttribute("visits", visits.findByUserId(userId));
-        System.out.println(visits.findByUserId(userId).toString());
+        req.setAttribute("visits", cities.findByUserId(userId));
         req.getRequestDispatcher("/WEB-INF/pages/visits.jsp").forward(req, res);
     }
 }

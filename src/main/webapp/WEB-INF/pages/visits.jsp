@@ -75,8 +75,9 @@
                             <tbody>
                             <c:forEach var="visit" items="${visits}">
                                 <tr class="text-white">
-                                    <td><a href="visitDetails?id=${visit.getCity().getId()}"><c:out value="${visit.getCity().getName()}" /></a></td>
-                                    <td><c:out value="${visit.getCity().getCountry().getName()}" /></td>
+                                    <td><a href="visitDetails?id=${visit.getFirst().getId()}"><c:out
+                                      value="${visit.getFirst().getName()}" /></a></td>
+                                    <td><c:out value="${visit.getFirst().getCountry().getName()}" /></td>
                                     <td></td>
                                 </tr>
                             </c:forEach>
