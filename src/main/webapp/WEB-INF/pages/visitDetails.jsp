@@ -80,7 +80,7 @@
                                     <td><c:out value="${visit.getStartDate()}" /></td>
                                     <td><c:out value="${visit.getEndDate()}" /></td>
                                     <td><a><i class="now-ui-icons ui-2_settings-90"></i></a></td>
-                                    <td><a onclick="beforeDelete()"><i class="now-ui-icons ui-1_simple-remove"></i></a></td>
+                                    <td><a onclick="beforeDelete(${visit.getId()})"><i class="now-ui-icons ui-1_simple-remove"></i></a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -124,11 +124,14 @@
     function beforeDelete(visitId) {
         var result = confirm("Are you sure you want to delete this visit ?");
         if (result) {
-            $.ajax({
-                type: "DELETE",
-                url: "visitDetails",
-                data: `id=${visitId}`
-            });
+            const Http = new XMLHttpRequest();
+            const url='visitDetails?id=' + visitId;
+            Http.open("DELETE", url);
+            Http.send();
+
+            Http.onreadystatechange = (e) => {
+                console.log(Http.responseText)
+            }
         }
     }
 </script>

@@ -22,11 +22,16 @@ public class VisitDetailsServlet extends HttpServlet {
         String userId = user.getUsername();
         req.setAttribute("visits", visits.findByUserAndCityId(userId, cityId));
         req.getRequestDispatcher("/WEB-INF/pages/visitDetails.jsp").forward(req, res);
-    }
+}
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         int visitId = Integer.parseInt(req.getParameter("id"));
-        System.out.println("Delete visit " + visitId);
+        try {
+            visits.deleteById(visitId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        res.sendRedirect(req.getContextPath() + "/visits");
     }
 }
