@@ -76,9 +76,9 @@
                             <tbody>
                             <c:forEach var="city" items="${cities}">
                                 <tr class="text-white">
-                                    <td><c:out value="${city.getName()}" /></td>
-                                    <td><c:out value="${city.getCountry().getName()}" /></td>
-                                    <td></td>
+                                    <td><c:out value="${city.getFirst().getName()}" /></td>
+                                    <td><c:out value="${city.getFirst().getCountry().getName()}" /></td>
+                                    <td><c:out value="${city.getSecond()}"/></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

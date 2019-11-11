@@ -36,7 +36,7 @@
     <link href="./assets/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
 </head>
 
-<body class="landing-page sidebar-collapse">
+<body>
 <!-- Navbar -->
 <nav class="bg-primary fixed-top navbar navbar-expand-md">
     <div class="container">
@@ -57,15 +57,43 @@
     </div>
 </nav>
 <!-- End Navbar -->
-<div>
+<div class="page-header clear-filter" filter-color="orange">
     <div class="page-header-image" style="background-image:url('./assets/img/new-york.jpg')"></div>
-    <div class="content-center">
+    <div class="content">
         <div class="container">
-            <h1 class="title"><c:out value="${visits[0].getCity().getName()}" /></h1>
-
+            <div class="col-md-10 ml-auto mr-auto">
+                <c:choose>
+                    <c:when test="${not empty visits}">
+                        <h1 class="title"><c:out value="${visits.get(0).getCity().getName()}" /></h1>
+                        <table>
+                            <thead>
+                            <tr class="text-white">
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="visit" items="${visits}">
+                                <tr class="text-white">
+                                    <td><c:out value="${visit.getStartDate()}" /></td>
+                                    <td><c:out value="${visit.getEndDate()}" /></td>
+                                    <td><a><i class="now-ui-icons ui-2_settings-90"></i></a></td>
+                                    <td><a onclick="beforeDelete()"><i class="now-ui-icons ui-1_simple-remove"></i></a></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:when>
+                    <c:otherwise>
+                        <h2>No visits yet !</h2>
+                    </c:otherwise>
+                </c:choose>
+            </div>
         </div>
     </div>
-
+</div>
     <footer class="footer mt-auto py-3 fixed-bottom bg-primary">
         <div class=" container text-white">
             <div class="copyright" id="copyright">
@@ -78,7 +106,6 @@
             </div>
         </div>
     </footer>
-</div>
 <!--   Core JS Files   -->
 <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
 <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
@@ -93,6 +120,18 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="./assets/js/now-ui-kit.js?v=1.3.0" type="text/javascript"></script>
+<script>
+    function beforeDelete(visitId) {
+        var result = confirm("Are you sure you want to delete this visit ?");
+        if (result) {
+            $.ajax({
+                type: "DELETE",
+                url: "visitDetails",
+                data: `id=${visitId}`
+            });
+        }
+    }
+</script>
 </body>
 
 </html>

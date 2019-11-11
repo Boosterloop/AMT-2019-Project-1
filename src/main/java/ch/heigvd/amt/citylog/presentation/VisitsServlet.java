@@ -17,6 +17,7 @@ import java.io.IOException;
  * @author Luc Wachter, Alison Savary
  */
 public class VisitsServlet extends HttpServlet {
+
     @EJB
     private VisitsDAO visits;
 

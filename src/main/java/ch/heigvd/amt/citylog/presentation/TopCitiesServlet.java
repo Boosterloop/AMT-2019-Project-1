@@ -29,7 +29,7 @@ public class TopCitiesServlet extends HttpServlet {
         }
 
 
-        req.setAttribute("cities", cities.findAll());
+        req.setAttribute("cities", cities.findAllByPopularity());
         req.getRequestDispatcher("/WEB-INF/pages/cities.jsp").forward(req, res);
     }
 }
