@@ -1,7 +1,6 @@
 package ch.heigvd.amt.citylog.integration;
 
 import ch.heigvd.amt.citylog.model.City;
-import ch.heigvd.amt.citylog.model.Country;
 import ch.heigvd.amt.citylog.model.User;
 import ch.heigvd.amt.citylog.model.Visit;
 
@@ -34,37 +33,6 @@ public class VisitsDAOImpl implements VisitsDAO {
 
     @EJB
     UsersDAO users;
-
-    @Override
-    public List<Visit> findByUserId(String userId) {
-        List<Visit> visits = new LinkedList<>();
-
-        try (Connection connection = dataSource.getConnection()) {
-            PreparedStatement statement =
-                connection.prepareStatement("SELECT * FROM Visit WHERE fk_username = ?");
-            statement.setString(1, userId);
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                int idVisit = Integer.parseInt(resultSet.getString("idVisit"));
-                String name = resultSet.getString("fk_username");
-                int idCity = Integer.parseInt(resultSet.getString("fk_idCity"));
-                String startDate = resultSet.getString("startDate");
-                String endDate = resultSet.getString("endDate");
-
-                // Get city and user from resulting ids
-                City city = cities.findById(idCity);
-                User user = users.findById(name);
-
-                visits.add(new Visit(idVisit, user, city, startDate, endDate));
-            }
-
-             return visits;
-        } catch (SQLException ex) {
-            Logger.getLogger(VisitsDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-            throw new Error(ex);
-        }
-    }
 
     @Override
     public List<Visit> findByUserAndCityId(String userId, Integer cityId) {

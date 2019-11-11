@@ -11,7 +11,5 @@ import java.util.List;
  * @author Luc Wachter, Alison Savary
  */
 public interface VisitsDAO extends DAO<Integer, Visit> {
-    List<Visit> findByUserId(String userId);
-
     List<Visit> findByUserAndCityId(String userId, Integer cityId);
 }
