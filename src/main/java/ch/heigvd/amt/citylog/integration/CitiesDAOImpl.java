@@ -66,7 +66,7 @@ public class CitiesDAOImpl implements CitiesDAO {
             Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement =
                 connection.prepareStatement("SELECT idCity, City.name, fk_countryCode, COUNT(*) AS count FROM City " +
-                    "INNER JOIN Visit ON City.idCity = Visit.fk_idCity GROUP BY City.idCity ORDER BY COUNT(*)");
+                    "INNER JOIN Visit ON City.idCity = Visit.fk_idCity GROUP BY City.idCity ORDER BY COUNT(*) DESC");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -85,6 +85,37 @@ public class CitiesDAOImpl implements CitiesDAO {
             return citiesPopularity;
         } catch (SQLException ex) {
             Logger.getLogger(CitiesDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new Error(ex);
+        }
+    }
+
+    @Override
+    public List<Pair<City, Integer>> findByUserId(String userId) {
+        List<Pair<City, Integer>> visits = new LinkedList<>();
+
+        try (Connection connection = dataSource.getConnection()) {
+            PreparedStatement statement =
+                connection.prepareStatement("SELECT idCity, City.name, fk_countryCode, COUNT(*) AS count FROM " +
+                    "City INNER JOIN Visit ON City.idCity = Visit.fk_idCity WHERE Visit.fk_username=? GROUP BY City" +
+                    ".idCity, City.name ORDER BY City.name ASC");
+            statement.setString(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String id = resultSet.getString("idCity");
+                String name = resultSet.getString("name");
+                String countryCode = resultSet.getString("fk_countryCode");
+                int count = Integer.parseInt(resultSet.getString("count"));
+                // Get country from resulting id
+                Country country = countries.findById(countryCode);
+
+                City newCity = new City(Integer.parseInt(id), name, country);
+                visits.add(new Pair<>(newCity, count));
+            }
+
+            return visits;
+        } catch (SQLException ex) {
+            Logger.getLogger(VisitsDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
             throw new Error(ex);
         }
     }
