@@ -36,7 +36,7 @@
     <link href="./assets/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
 </head>
 
-<body>
+<body style="background-image:url('./assets/img/new-york.jpg')">
 <!-- Navbar -->
 <nav class="bg-primary fixed-top navbar navbar-expand-md">
     <div class="container">
@@ -57,14 +57,13 @@
     </div>
 </nav>
 <!-- End Navbar -->
-<div class="page-header clear-filter" filter-color="orange">
-    <div class="page-header-image" style="background-image:url('./assets/img/new-york.jpg')"></div>
+<div style="margin-top:60px; margin-bottom:100px">
     <div class="content">
         <div class="container">
             <div class="col-md-10 ml-auto mr-auto">
                 <c:choose>
                     <c:when test="${not empty visits}">
-                        <h1 class="title"><c:out value="${visits.get(0).getCity().getName()}" /></h1>
+                        <h1 class="title text-white"><c:out value="${visits.get(0).getCity().getName()}" /></h1>
                         <table class="table">
                             <thead>
                             <tr class="text-white">

@@ -62,7 +62,7 @@
     </div>
 </nav>
 <!-- End Navbar -->
-<div class="page-header clear-filter" filter-color="orange">
+<div class="page-header">
     <div class="page-header-image" style="background-image:url('./assets/img/new-york.jpg')"></div>
     <div class="content">
         <div class="container">
