@@ -18,7 +18,7 @@ def generate_visits(username):
         date = "{:04}-{:02}-{:02}".format(year, month, day)
         city = randint(1, 12900)
 
-        query +=  "0, {0}, {1}, {2}, {2}\n".format(username, city, date)
+        query +=  "0,{0},{1},{2},{2}\n".format(username, city, date)
 
     return query
 
@@ -35,7 +35,7 @@ nameList = generate_username(nbr_of_users)
 names = list(dict.fromkeys(nameList))
 
 # Create queries for visits at the same time
-visit_load = "idVisit, fk_username, fk_idCity, startDate, endDate\n"
+visit_load = "idVisit,fk_username,fk_idCity,startDate,endDate\n"
 
 visit_load += generate_visits("luc")
 visit_load += generate_visits("alison")
