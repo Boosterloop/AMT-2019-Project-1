@@ -109,3 +109,7 @@ _Sadly, we were only able to test one DAO, and with simple tests._
 Benchmark for pagination between the business and the resources tier...
 
 _We sadly missed the opportunity to achieve anything useful in this part of the lab._
+
+## Known issues
+
+- After updating or deleting an existing visit the user should be redirected to /visits but it does not happen.
